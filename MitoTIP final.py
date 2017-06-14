@@ -116,8 +116,6 @@ def get_predictive_score(pos_num, base, recalc):
 if first_run == True:
     ### importing things 
     import os
-    import math 
-    import scipy
     import csv
     import ast
     # central_directory = "C:\\Users\\Sanjay Sonney\\OneDrive for Business\\University of Toronto Medical School\\Year 1 Summer\\Final Master Files - rebuilt\\"
@@ -126,7 +124,6 @@ if first_run == True:
     output_dir = "\\Output"
     os.chdir(central_directory + dataset)
     from openpyxl import load_workbook, Workbook
-    from Bio import SeqIO
     
     #### opening necessary files 
     # workbook_name = str(input("Enter the name of the workbook: "))
