@@ -419,7 +419,7 @@ if first_run == True:
                 '''
                 mut_path_mod[cellr.value] = [[0,0,0],[0,0,0],[0,0,0],[0,0,0]]
     cellr_previous = 0
-    for rowr in sheet_path_ref.iter_rows('A2:A322'): #Now the modification values will be changed depending upon the features of the mutation
+    for rowr in sheet_path_ref.iter_rows('A2:A322'): #Now the modification values will be changed depending upon the features of the mutation, needs to be udpated
         for cellr in rowr:
             if sheet_path_ref.cell(row = cellr.row, column = 5).value[0:4] == "tRNA":
                 cur_cell_val = sheet_path_ref.cell(row = cellr.row, column = 4).value
