@@ -3,7 +3,7 @@ from openpyxl import load_workbook
 from Bio import SeqIO
 
 tRNA_data = "tRNA data and scoring"
-central_directory = "C:\\Users\\sanja\\University of Toronto\\OneDrive - University of Toronto\\University of Toronto Medical School\\Year 2 summer\\Summer project\\MitoTIP\\Final MitoTIP uptodate"
+central_directory = "C:\\Users\\sanjay sonney\\SickKids\\Neal Sondheimer - Sanjay Project 2017\\MitoTIP revision work\\MitoTIP"
 dataset = "\\dataset files"
 output_dir = "\\Output"
 os.chdir(central_directory+dataset)

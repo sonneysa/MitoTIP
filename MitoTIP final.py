@@ -119,7 +119,8 @@ if first_run == True:
     import csv
     import ast
     # central_directory = "C:\\Users\\Sanjay Sonney\\OneDrive for Business\\University of Toronto Medical School\\Year 1 Summer\\Final Master Files - rebuilt\\"
-    central_directory = "C:\\Users\\sanja\\University of Toronto\\OneDrive - University of Toronto\\University of Toronto Medical School\\Year 2 summer\\Summer project\\MitoTIP\\Final MitoTIP uptodate"
+    # central_directory = "C:\\Users\\sanja\\University of Toronto\\OneDrive - University of Toronto\\University of Toronto Medical School\\Year 2 summer\\Summer project\\MitoTIP\\Final MitoTIP uptodate"
+    central_directory = "C:\\Users\\sanjay sonney\\SickKids\\Neal Sondheimer - Sanjay Project 2017\\MitoTIP revision work\\MitoTIP"
     dataset = "\\dataset files"
     output_dir = "\\Output"
     os.chdir(central_directory + dataset)
@@ -533,8 +534,8 @@ if prepare_recalculation_of_database == 1:
     os.chdir(central_directory + output_dir)
     list_of_mut = []
     for pos_num in list(mut_dict.keys()):
-        # if mut_dict[pos_num][1]>3:    #only confirmed mutations are being tested now
-        if mut_dict[pos_num][1]>1:      #To test confirmed and/or heteroplasmic mutations 
+        if mut_dict[pos_num][1]>3:    #only confirmed mutations are being tested now
+        # if mut_dict[pos_num][1]>1:      #To test confirmed and/or heteroplasmic mutations 
             list_of_mut.append([pos_num, dict_mut_rev[mut_dict_path[pos_num].index(max(mut_dict_path[pos_num]))]])
     list_of_mut.sort()
     classified_mut = 0
