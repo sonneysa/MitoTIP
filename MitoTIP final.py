@@ -20,10 +20,10 @@ pathpoly = 6                                # weight of pathogneic and polymorph
 cons = 4                                    # weight of conservation of the site between species 
 
 ### Variables controlling the weight of the three sources of information feeding into the final prediction score 
-feature = 5                                 #scaling of featuer score 
-specific_score_scal = 8.5                   #scaling fo specific score
-average_score_scal = 9.5                    #scaling of average score 
-base_score_scal = 3.5                       #scaling of base score (see flowchart)
+feature = 4                                #scaling of featuer score 
+specific_score_scal = 11                   #scaling fo specific score
+average_score_scal = 10                    #scaling of average score 
+base_score_scal = 2                        #scaling of base score (see flowchart)
 
 def get_predictive_score(pos_num, base, recalc):
     '''
