@@ -41,7 +41,7 @@ def find_path_start(start):
     In the pathogenic mutations reference, this function finds the starting line of the sequences of interest
     '''
     sheet_path_reference = wb['Pathogenic Mutation Reference']
-    for rowr in sheet_path_reference.iter_rows('A2:A306'):              #Range needs to be changed depending on if new additions have been made to the file 
+    for rowr in sheet_path_reference.iter_rows('A2:A345'):              #Range needs to be changed depending on if new additions have been made to the file 
         for cellr in rowr:
             if float(cellr.value) >= start: 
                 return str(cellr.row)
@@ -51,7 +51,7 @@ def find_path_end(end):
     In the pathogenic mutations reference, this function finds the end line of the sequence range of interest
     '''
     sheet_path_reference = wb['Pathogenic Mutation Reference']
-    for rowr in sheet_path_reference.iter_rows('A2:A306'):              #Range needs to be changed depending on if new additions have been made to the file 
+    for rowr in sheet_path_reference.iter_rows('A2:A345'):              #Range needs to be changed depending on if new additions have been made to the file 
         for cellr in rowr:
             if cellr.value > end and cellr.value < 16033:               #Highest number must be updated if reference sheet is changed
                 return str((cellr.row -1 ))
@@ -63,7 +63,7 @@ def find_poly_start(start):
     In the pathogenic mutations reference, this function finds the starting line of the sequences of interest
     '''
     sheet_poly_reference = wb['Mitomap Polymorphism Reference']
-    for rowr in sheet_poly_reference.iter_rows('A2:A9229'):           #Range needs to be changed depending on if new additions have been made to the file 
+    for rowr in sheet_poly_reference.iter_rows('A2:A9846'):           #Range needs to be changed depending on if new additions have been made to the file 
         for cellr in rowr:
             if float(cellr.value) >= start: 
                 # print ("start:" + str(start) + "-" + str(cellr.row))  #diagnostic 
@@ -74,11 +74,11 @@ def find_poly_end(end):
     In the pathogenic mutations reference, this function finds the end line of the sequence range of interest
     '''
     sheet_poly_reference = wb['Mitomap Polymorphism Reference']
-    for rowr in sheet_poly_reference.iter_rows('A2:A9229'):             #Range needs to be changed depending on if new additions have been made to the file 
+    for rowr in sheet_poly_reference.iter_rows('A2:A9846'):             #Range needs to be changed depending on if new additions have been made to the file 
         for cellr in rowr:
-            if cellr.value > end and cellr.value < 16033:               #Highest number must be updated if reference sheet is changed
+            if cellr.value > end and cellr.value < 16023:               #Highest number must be updated if reference sheet is changed
                 return str((cellr.row -1 ))
-                print ("end:" + str(end) + "-" + str(cellr.row))  #diagnostic
+                # print ("end:" + str(end) + "-" + str(cellr.row))  #diagnostic
             elif cellr.value == 16023:                                  #Highest number must be updated if reference sheet is changed
                 # print ("end:" + str(end) + "-" + str(cellr.row))  #diagnostic
                 return str(cellr.row)
@@ -187,8 +187,8 @@ for tRNA in list_tRNA:      #Adds pathogenic mutations
                                     sheet_active.cell(row = 7, column = cell.col_idx+3, value = MitoMAP_path_ref)
                             if ref_resulting_change == 'd' or ref_resulting_change == ':' or ref_resulting_change == "i":
                                 if str(sheet_active.cell(row = 4, column = cell.col_idx).value) == 'A':
-                                    if str(MitoMAP_path.value) != 'None' and str(MitoMAP_path.value) != "":
-                                        sheet_active.cell(row = 7, column = cell.col_idx, value = str(MitoMAP_path.value)+ ", " + MitoMAP_path_ref)
+                                    if str(MitoMAP_path_A.value) != 'None' and str(MitoMAP_path_A.value) != "":
+                                        sheet_active.cell(row = 7, column = cell.col_idx, value = str(MitoMAP_path_A.value)+ ", " + MitoMAP_path_ref)
                                     else:
                                         sheet_active.cell(row = 7, column = cell.col_idx, value = MitoMAP_path_ref)
                                 if str(sheet_active.cell(row = 4, column = cell.col_idx).value) == 'G':

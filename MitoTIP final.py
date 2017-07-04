@@ -20,10 +20,10 @@ pathpoly = 6                                # weight of pathogneic and polymorph
 cons = 4                                    # weight of conservation of the site between species 
 
 ### Variables controlling the weight of the three sources of information feeding into the final prediction score 
-feature = 4                                #scaling of featuer score 
-specific_score_scal = 11                   #scaling fo specific score
-average_score_scal = 10                    #scaling of average score 
-base_score_scal = 2                        #scaling of base score (see flowchart)
+feature = 5                                #scaling of featuer score 
+specific_score_scal = 8.5                   #scaling fo specific score
+average_score_scal = 9.5                    #scaling of average score 
+base_score_scal = 5                        #scaling of base score (see flowchart)
 
 def get_predictive_score(pos_num, base, recalc):
     '''
@@ -408,7 +408,7 @@ if first_run == True:
     sheet_alignment2 = wb['Raw Pathogenic scores']
     sheet_alignment3 = wb['Specific scores']
     ##### goes through the mutations in the path_ref file and sets the modification values in the dictionary; 
-    for rowr in sheet_path_ref.iter_rows('A2:A322'): #Creates dictionary properly 
+    for rowr in sheet_path_ref.iter_rows('A2:A345'): #Creates dictionary properly, needs to be updated
         for cellr in rowr:
             if sheet_path_ref.cell(row = cellr.row, column = 5).value[0:4] == "tRNA":
                 Empty_mut_dataset = [[0,0,0],[0,0,0],[0,0,0],[0,0,0]]                   
@@ -417,7 +417,7 @@ if first_run == True:
                 '''
                 mut_path_mod[cellr.value] = [[0,0,0],[0,0,0],[0,0,0],[0,0,0]]
     cellr_previous = 0
-    for rowr in sheet_path_ref.iter_rows('A2:A322'): #Now the modification values will be changed depending upon the features of the mutation, needs to be udpated
+    for rowr in sheet_path_ref.iter_rows('A2:A345'): #Now the modification values will be changed depending upon the features of the mutation, needs to be updated
         for cellr in rowr:
             if sheet_path_ref.cell(row = cellr.row, column = 5).value[0:4] == "tRNA":
                 cur_cell_val = sheet_path_ref.cell(row = cellr.row, column = 4).value
@@ -426,6 +426,7 @@ if first_run == True:
                 if cur_cell_str[base_chg_indx] == "A" or cur_cell_str[base_chg_indx] == "G" or cur_cell_str[base_chg_indx] == "C" or cur_cell_str[base_chg_indx] == "T":
                     dict_mut_key = dict_mut[cur_cell_str[base_chg_indx]]                #Tells you which sublist to use depending on base (AGCT -> 0123)
                 else:
+                    print (cur_cell_str) #diagnostic
                     dict_mut_key = dict_mut[cur_cell_str[0]]
                 if sheet_path_ref.cell(row = cellr.row, column = 7).value == "+":           #If it is heteroplasmic, the first number is changed to a 2 
                     mut_path_mod[cellr.value][dict_mut_key][0] = 2
