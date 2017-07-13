@@ -1,9 +1,9 @@
 ### setting controlling the outputs of the program
 prepare_tRNA_alignment_insertion = 1        #this updates the tRNA data and scoring file
-prepare_all_combinations_detailed = 1       #this updates the file containing scores for all possible tRNA mutations with breakdown of scores
+prepare_all_combinations_detailed = 1      #this updates the file containing scores for all possible tRNA mutations with breakdown of scores
 prepare_all_combinations = 1                #this updates the file containing scores for all possible tRNA mutations, but only the final predictive score
 prepare_recalculation_of_database = 1       #this prepares the recalculated database with the 'take-one-out' approach to assessing sens and spec
-threshold = 13.225                          #The starting threshold at which sensitivity and specificity is assessed 
+threshold = 12.8                            #The starting threshold at which sensitivity and specificity is assessed 
 output_sensitivity_specificity = 1          #this determines whether the sensitivity and specificity will be assessed 
 first_run = True                            #default set as true 
 cons_reference = "Original_conservation"    #This determines which conservation database is used 
@@ -16,14 +16,14 @@ else:
     first_run = False
 
 ### Variables controlling the weight of each of the factors feeding into the specific score; changed during optimization process 
-pathpoly = 6                                # weight of pathogneic and polymorphic mutation hx 
-cons = 4                                    # weight of conservation of the site between species 
+pathpoly = 8.6                                # weight of pathogneic and polymorphic mutation hx 
+cons = 1.4                                     # weight of conservation of the site between species 
 
 ### Variables controlling the weight of the three sources of information feeding into the final prediction score 
-feature = 5                                #scaling of featuer score 
-specific_score_scal = 8.5                   #scaling fo specific score
-average_score_scal = 9.5                    #scaling of average score 
-base_score_scal = 5                        #scaling of base score (see flowchart)
+feature = 7.9                                #scaling of featuer score 
+specific_score_scal = 11.5                 #scaling fo specific score
+average_score_scal = 3.0                  #scaling of average score 
+base_score_scal = 4.1                        #scaling of base score (see flowchart)
 
 def get_predictive_score(pos_num, base, recalc):
     '''
@@ -408,7 +408,7 @@ if first_run == True:
     sheet_alignment2 = wb['Raw Pathogenic scores']
     sheet_alignment3 = wb['Specific scores']
     ##### goes through the mutations in the path_ref file and sets the modification values in the dictionary; 
-    for rowr in sheet_path_ref.iter_rows('A2:A345'): #Creates dictionary properly, needs to be updated
+    for rowr in sheet_path_ref.iter_rows('A2:A343'): #Creates dictionary properly, needs to be updated
         for cellr in rowr:
             if sheet_path_ref.cell(row = cellr.row, column = 5).value[0:4] == "tRNA":
                 Empty_mut_dataset = [[0,0,0],[0,0,0],[0,0,0],[0,0,0]]                   
@@ -417,7 +417,7 @@ if first_run == True:
                 '''
                 mut_path_mod[cellr.value] = [[0,0,0],[0,0,0],[0,0,0],[0,0,0]]
     cellr_previous = 0
-    for rowr in sheet_path_ref.iter_rows('A2:A345'): #Now the modification values will be changed depending upon the features of the mutation, needs to be updated
+    for rowr in sheet_path_ref.iter_rows('A2:A343'): #Now the modification values will be changed depending upon the features of the mutation, needs to be updated
         for cellr in rowr:
             if sheet_path_ref.cell(row = cellr.row, column = 5).value[0:4] == "tRNA":
                 cur_cell_val = sheet_path_ref.cell(row = cellr.row, column = 4).value
