@@ -408,7 +408,7 @@ if first_run == True:
     sheet_alignment2 = wb['Raw Pathogenic scores']
     sheet_alignment3 = wb['Specific scores']
     ##### goes through the mutations in the path_ref file and sets the modification values in the dictionary; 
-    for rowr in sheet_path_ref.iter_rows('A2:A343'): #Creates dictionary properly, needs to be updated
+    for rowr in sheet_path_ref.iter_rows('A2:A342'): #Creates dictionary properly, needs to be updated
         for cellr in rowr:
             if sheet_path_ref.cell(row = cellr.row, column = 5).value[0:4] == "tRNA":
                 Empty_mut_dataset = [[0,0,0],[0,0,0],[0,0,0],[0,0,0]]                   
@@ -417,7 +417,7 @@ if first_run == True:
                 '''
                 mut_path_mod[cellr.value] = [[0,0,0],[0,0,0],[0,0,0],[0,0,0]]
     cellr_previous = 0
-    for rowr in sheet_path_ref.iter_rows('A2:A343'): #Now the modification values will be changed depending upon the features of the mutation, needs to be updated
+    for rowr in sheet_path_ref.iter_rows('A2:A342'): #Now the modification values will be changed depending upon the features of the mutation, needs to be updated
         for cellr in rowr:
             if sheet_path_ref.cell(row = cellr.row, column = 5).value[0:4] == "tRNA":
                 cur_cell_val = sheet_path_ref.cell(row = cellr.row, column = 4).value
